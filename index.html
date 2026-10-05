@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistem Booking Online</h1>
+    </header>
+
+    <main class="container">
+        <!-- Katalog Pilihan Unit -->
+        <section class="katalog">
+            <h2>Pilihan Unit</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x180" alt="Kamar Deluxe">
+                    <div class="card-body">
+                        <h3>Kamar Deluxe 01</h3>
+                        <p class="harga">Rp 200.000 / malam</p>
+                        <button onclick="pilihKamar('Kamar Deluxe 01', 200000)">Pilih Unit</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x180" alt="Kamar Executive">
+                    <div class="card-body">
+                        <h3>Kamar Executive 02</h3>
+                        <p class="harga">Rp 350.000 / malam</p>
+                        <button onclick="pilihKamar('Kamar Executive 02', 350000)">Pilih Unit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Pemesanan -->
+        <section class="form-section">
+            <h2>Form Pemesanan</h2>
+            <form id="formBooking">
+                <div class="form-group">
+                    <label>Unit Dipilih:</label>
+                    <input type="text" id="unitPilihan" readonly placeholder="Klik tombol pilih unit di atas">
+                </div>
+                <div class="form-group">
+                    <label>Nama Pemesan:</label>
+                    <input type="text" id="nama" required placeholder="Masukkan nama kamu">
+                </div>
+                <div class="form-group">
+                    <label>Jumlah Malam:</label>
+                    <input type="number" id="durasi" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Total Harga:</label>
+                    <input type="text" id="totalHarga" readonly value="Rp 0">
+                </div>
+                <button type="submit" class="btn-submit">Kirim Booking</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

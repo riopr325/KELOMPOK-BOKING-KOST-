@@ -29,7 +29,7 @@
                     <img src="https://via.placeholder.com/300x180" alt="Kamar Executive">
                     <div class="card-body">
                         <h3>Kamar Executive 02</h3>
-                        <p class="harga">Rp 350.000 / malam</p>
+                        <p class="harga">Rp 350.000 / bulan</p>
                         <button onclick="pilihKamar('Kamar Executive 02', 350000)">Pilih Unit</button>
                     </div>
                 </div>
@@ -38,6 +38,25 @@
 
         <!-- Form Pemesanan -->
         <section class="form-section">
+            <!-- Tabel Riwayat / Data Pemesanan -->
+<section class="riwayat-section" style="margin-top: 30px; background: white; padding: 20px; border-radius: 8px;">
+    <h2>Daftar Pemesanan Masuk</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <thead>
+            <tr style="background-color: #007bff; color: white;">
+                <th style="padding: 10px; border: 1px solid #ddd;">No</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Nama Pemesan</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Unit Dipilih</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Durasi</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Total Harga</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Waktu Booking</th>
+            </tr>
+        </thead>
+        <tbody id="tabelBookingBody" style="text-align: center;">
+            <!-- Data akan dimuat otomatis dari database -->
+        </tbody>
+    </table>
+</section>
             <h2>Form Pemesanan</h2>
             <form id="formBooking">
                 <div class="form-group">

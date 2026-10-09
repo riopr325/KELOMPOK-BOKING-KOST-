@@ -2,14 +2,27 @@
 header('Content-Type: application/json');
 require_once '../config/koneksi.php';
 
-// Ambil semua data booking dari yang terbaru
-$query = "SELECT * FROM booking ORDER BY id DESC";
-$result = mysqli_query($koneksi, $query);
+$unit = $_POST['unit'] ?? '';
+$nama = $_POST['nama'] ?? '';
+$durasi = $_POST['durasi'] ?? 1;
+$total = $_POST['total'] ?? 0;
 
-$booking_list = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $booking_list[] = $row;
+if (empty($unit) || empty($nama)) {
+    echo json_encode(['status' => 'error', 'message' => 'Data tidak lengkap.']);
+    exit;
 }
 
-echo json_encode($booking_list);
+// 1. Simpan data transaksi ke tabel booking
+$queryBooking = "INSERT INTO booking (nama_unit, nama_pemesan, durasi, total_harga) 
+                 VALUES ('$unit', '$nama', $durasi, $total)";
+
+if (mysqli_query($koneksi, $queryBooking)) {
+    // 2. Ubah status kamar di tabel kamar menjadi 'terisi'
+    $updateStatus = "UPDATE kamar SET status = 'terisi' WHERE nama_kamar = '$unit'";
+    mysqli_query($koneksi, $updateStatus);
+
+    echo json_encode(['status' => 'success', 'message' => 'Pemesanan berhasil disimpan!']);
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Gagal menyimpan pemesanan.']);
+}
 ?>
